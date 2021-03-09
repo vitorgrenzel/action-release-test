@@ -20,6 +20,7 @@ jobs:
       #     token: ${{ secrets.GITHUB_TOKEN }}
       #     template: '{commits}'
 
-      - uses: rdaniels6813/semantic-release-alpine@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release
+        uses: ph-fritsche/action-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
