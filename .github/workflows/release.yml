@@ -1,12 +1,13 @@
 name: Generate Release Note
 
 on:
-  create:
+  push:
     branches:
       - 'release/**'
 
 jobs:
-  build:
+  release:
+    name: Release
     runs-on: ubuntu-latest
 
     steps:
@@ -19,6 +20,6 @@ jobs:
       #     token: ${{ secrets.GITHUB_TOKEN }}
       #     template: '{commits}'
 
-      - uses: go-semantic-release/action@v1
+      - uses: rdaniels6813/semantic-release-alpine@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
