@@ -12,10 +12,19 @@ jobs:
     steps:
       - name: Checkout your project
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 50
+      
+      - run: git tag ${{ github.event.inputs.Version }}
 
       - name: Release
         uses: fregante/release-with-changelog@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           template: '{commits}'
+
+      - name: Update major tag
+        run: |
+          MAJOR=$(echo ${{ github.event.inputs.Version }} | sed 's/\..*//')
+          git push origin HEAD:refs/tags/$MAJOR --force
 
