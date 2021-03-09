@@ -6,8 +6,7 @@ on:
       - 'release/**'
 
 jobs:
-  release:
-    name: Release
+  build:
     runs-on: ubuntu-latest
 
     steps:
