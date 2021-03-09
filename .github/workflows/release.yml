@@ -11,7 +11,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Release
-      uses: ph-fritsche/action-release@v1
+
+    - name: Semantic Releaser
+      uses: jossef/action-semantic-releaser@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
