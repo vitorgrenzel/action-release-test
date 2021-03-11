@@ -3,24 +3,31 @@ name: Generate Release Note
 on:
   push:
     branches:
-      - 'release/**'
+      - 'main'
 
 jobs:
   release:
-    name: Release
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout your project
-        uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
 
-      # - name: Release
-      #   uses: fregante/release-with-changelog@v3
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     template: '{commits}'
+    - name: Create an incremental release
+      uses: aurestic/incrementarl-create-release@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    # - uses: fregante/release-with-changelog@v3
+    #   with:
+    #     template: '{commits}'
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
 
-      - name: Release
-        uses: ph-fritsche/action-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create Release
+      id: semrel
+      uses: go-semantic-release/action@v1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
