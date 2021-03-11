@@ -16,8 +16,18 @@ jobs:
       uses: aurestic/incrementarl-create-release@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - uses: fregante/release-with-changelog@v3
+        
+    # - uses: fregante/release-with-changelog@v3
+    #   with:
+    #     template: '{commits}'
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - uses: actions/setup-node@v1
       with:
-        template: '{commits}'
-        token: ${{ secrets.GITHUB_TOKEN }}
+        node-version: 12.x
+
+    - name: Create Release
+      id: semrel
+      uses: go-semantic-release/action@v1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
