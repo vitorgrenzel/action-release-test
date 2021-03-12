@@ -22,6 +22,27 @@ categories:
       - 'bugfix'
       - 'bug'
 
+autolabeler:
+  - label: 'chore'
+    files:
+      - '*.md'
+    branch:
+      - '/docs{0,1}\/.+/'
+  - label: 'bug'
+    branch:
+      - '/fix\/.+/'
+    title:
+      - '/fix/i'
+  - label: 'enhancement'
+    branch:
+      - '/feature\/.+/'
+    body:
+      - '/JIRA-[0-9]{1,4}/'
+
+replacers:
+  - search: '/DXT-(\d{4})/g'
+    replace: 'https://jira.viavarejo.com.br/browse/DXT-$1-$2'
+
 version-resolver:
   major:
     labels:
@@ -46,3 +67,7 @@ version-resolver:
       - 'type: docs'
       - 'type: dependencies'
       - 'type: security'
+  default: patch
+
+exclude-labels:
+  - 'skip-changelog'
