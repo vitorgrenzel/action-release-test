@@ -26,8 +26,16 @@ jobs:
       with:
         node-version: 12.x
 
-    - name: Create Release
-      id: semrel
-      uses: go-semantic-release/action@v1
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create Release Note
+      uses: release-drafter/release-drafter@v5
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+      # with:
+      #   disable-autolabeler: true
+
+    # - name: Create Release
+    #   id: semrel
+    #   uses: go-semantic-release/action@v1
+    #   with:
+    #     github-token: ${{ secrets.GITHUB_TOKEN }}
