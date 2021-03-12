@@ -4,27 +4,41 @@ template: |
   # What's Changed v$RESOLVED_VERSION
 
   $CHANGES
+
 categories:
   - title: 'Breaking'
     label: 'type: breaking'
   - title: 'New'
     label: 'type: feature'
-  - title: 'Bug Fixes'
-    label: 'type: bug'
   - title: 'Maintenance'
     label: 'type: maintenance'
   - title: 'Documentation'
     label: 'type: docs'
   - title: 'Dependency Updates'
     label: 'type: dependencies'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'fix'
+      - 'bugfix'
+      - 'bug'
 
 version-resolver:
   major:
     labels:
       - 'type: breaking'
+      - 'type: bug'
+      - 'type: maintenance'
+      - 'type: docs'
+      - 'type: dependencies'
+      - 'type: security'
   minor:
     labels:
       - 'type: feature'
+      - 'type: bug'
+      - 'type: maintenance'
+      - 'type: docs'
+      - 'type: dependencies'
+      - 'type: security'
   patch:
     labels:
       - 'type: bug'
@@ -32,6 +46,3 @@ version-resolver:
       - 'type: docs'
       - 'type: dependencies'
       - 'type: security'
-
-exclude-labels:
-  - 'skip-changelog'
