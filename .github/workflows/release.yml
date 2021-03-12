@@ -22,17 +22,18 @@ jobs:
     #     template: '{commits}'
     #     token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Create Release Note
-      uses: release-drafter/release-drafter@v5
-      with:
-        publish: true
-        disable-autolabeler: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Create Release Note
+    #   uses: release-drafter/release-drafter@v5
+    #   with:
+    #     publish: true
+    #     disable-autolabeler: true
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - uses: rdaniels6813/semantic-release-alpine@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+
       # with:
       #   disable-autolabeler: true
 
