@@ -1,7 +1,7 @@
 name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
 template: |
-  # What's Changed v$RESOLVED_VERSION
+  # Release Note: v$RESOLVED_VERSION
 
   $CHANGES
 
@@ -46,6 +46,7 @@ replacers:
 version-resolver:
   major:
     labels:
+      - 'fix'
       - 'type: breaking'
       - 'type: bug'
       - 'type: maintenance'
@@ -54,6 +55,7 @@ version-resolver:
       - 'type: security'
   minor:
     labels:
+      - 'fix'
       - 'type: feature'
       - 'type: bug'
       - 'type: maintenance'
@@ -62,6 +64,7 @@ version-resolver:
       - 'type: security'
   patch:
     labels:
+      - 'fix'
       - 'type: bug'
       - 'type: maintenance'
       - 'type: docs'
